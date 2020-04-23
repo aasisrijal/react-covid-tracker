@@ -2,24 +2,35 @@ import React from 'react';
 
 import './App.css';
 
-import Cards from './components/Cards/Cards';
-import Chart from './components/Chart/Chart';
-import CountryPicker from './components/CountryPicker/CountryPicker';
+import { Chart, Cards, CountryPicker} from './components';
+import { fetchData } from './api';
 
-function App() {
-  return (
-    <div>
-           
-        <h2>
-          This is covid-19 tracker.
-        </h2>
-        <Cards />
-        <Chart />
-        <CountryPicker />
-      
-     
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    data: {},
+  }
+
+  async componentDidMount(){
+    const fetchedData = await fetchData();
+    
+    this.setState({ data: fetchedData });
+  }
+
+  render() {
+    const { data } = this.state;
+     return (
+      <div className="container">
+          
+          <Cards data={data} />
+          <Chart />
+          <CountryPicker />
+        
+       
+      </div>
+    );
+  }
+ 
 }
 
 export default App;
