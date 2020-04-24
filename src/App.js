@@ -23,8 +23,9 @@ class App extends React.Component {
       <div className="container">
           
           <Cards data={data} />
-          <Chart />
           <CountryPicker />
+          <Chart />
+          
         
        
       </div>
