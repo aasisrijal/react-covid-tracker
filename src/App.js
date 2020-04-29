@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Typography } from '@material-ui/core';
 import './App.css';
 
 import { Chart, Cards, CountryPicker} from './components';
@@ -29,7 +29,11 @@ class App extends React.Component {
     const { data, country } = this.state;
      return (
       <div className="container">
+      <div className="heading">
           
+          <img className="images" src="https://i.ibb.co/7QpKsCX/image.png" alt="covid-19" />
+          <Typography variant="h4">Tracker</Typography>
+          </div>
           <Cards data={data} />
           <CountryPicker handleCountryChange={this.handleCountryChange} />
           <Chart data={data} country={country} />
